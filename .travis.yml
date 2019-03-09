@@ -10,21 +10,29 @@ matrix:
       env:
       - DOCKER_IMAGE=conanio/gcc8 # GCC 8
       services:
-        - docker
+      - docker
     - os: linux
       dist: xenial
       language: general
       env:
       - DOCKER_IMAGE=conanio/clang7 # clang 7
       services:
-        - docker
+      - docker
     - os: osx
       osx_image: xcode10.2
       compiler: clang
       language: cpp
       env:
-        - CC=/usr/bin/clang
-        - CXX=/usr/bin/clang++
+      - CC=/usr/bin/clang
+      - CXX=/usr/bin/clang++
+    - os: windows
+      language: cpp
+      env:
+      - CONAN_ENV_GENERATOR=visual_studio
+      before_install:
+      - choco install python3 --pre
+      before_script:
+      - setx /M path "%path%;C:\Python38\Scripts\"
     allow_failures:
     - os: linux
       dist: xenial
