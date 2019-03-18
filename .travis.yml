@@ -32,7 +32,10 @@ matrix:
       before_install:
       - choco install python3 --pre
       before_script:
-      - setx /M PATH "%PATH%;C:\Python38;C:\Python38\Scripts\"
+      - setx PATH "%PATH%;C:\Python38\Scripts\"
+      script:
+      - setx PATH "%PATH%;C:\Python38\Scripts\"
+      - ./travis/install.sh
     allow_failures:
     - os: linux
       dist: xenial
