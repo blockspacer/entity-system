@@ -31,8 +31,7 @@ matrix:
       - CONAN_ENV_GENERATOR=visual_studio
       before_install:
       - choco install python3 --pre
-      before_script:
-      - setx PATH "%PATH%;C:\Python38\Scripts\"
+      - setx PATH "C:\Python38\Scripts;"%%PATH%%
     allow_failures:
     - os: linux
       dist: xenial
